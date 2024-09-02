@@ -10,7 +10,7 @@ exports.verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env."avengers");
+    const decoded = jwt.verify(token, "avengers");
     req.user = decoded;
   } catch (err) {
     return res.status(401).json({ message: "Invalid Token" });
