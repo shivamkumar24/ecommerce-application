@@ -1,4 +1,4 @@
-const pool = require("../config/db");
+const pool = require("../Config/db");
 
 exports.addProduct = async (req, res) => {
   const { name, category, description, price, discount } = req.body;
@@ -10,12 +10,10 @@ exports.addProduct = async (req, res) => {
       [name, category, description, price, discount, sellerId]
     );
 
-    res
-      .status(201)
-      .json({
-        message: "Product added successfully!",
-        product: result.rows[0],
-      });
+    res.status(201).json({
+      message: "Product added successfully!",
+      product: result.rows[0],
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
